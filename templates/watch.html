@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ anime.title_fa }}، قسمت {{ episode.number }} — YUMIRA{% endblock %}
+{% block body_class %}page-watch{% endblock %}
+
+{% block content %}
+<section class="watch fade-in">
+  <div class="container">
+    <a class="back-link" href="{% url 'anime_detail' anime.slug %}">→ بازگشت به جزئیات انیمه</a>
+    <h1 class="watch__title">{{ anime.title_fa }} <span class="ep-number">EP {{ episode.number|stringformat:"02d" }}</span></h1>
+    <p class="watch__subtitle">{{ episode.title }}</p>
+
+    <div class="player-frame">
+      {% if episode.video_file %}
+      {# Icons used by the player (drawn with simple shapes; the CSS shows or hides them). #}
+      <svg class="icon-sprite" aria-hidden="true">
+        <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></symbol>
+        <symbol id="i-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z" fill="currentColor"/></symbol>
+        <symbol id="i-back" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.5-5.8"/><path d="M4 4v4.5h4.5"/></g><text x="12" y="15.6" text-anchor="middle" font-size="9" font-weight="700" fill="currentColor">10</text></symbol>
+        <symbol id="i-forward" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.5-5.8"/><path d="M20 4v4.5h-4.5"/></g><text x="12" y="15.6" text-anchor="middle" font-size="9" font-weight="700" fill="currentColor">10</text></symbol>
+        <symbol id="i-volume" viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z" fill="currentColor"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+        <symbol id="i-muted" viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z" fill="currentColor"/><path d="M16 9.5l5 5M21 9.5l-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+        <symbol id="i-fullscreen" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+        <symbol id="i-exit-fullscreen" viewBox="0 0 24 24"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      </svg>
+
+      {# Without JavaScript the plain browser controls stay (the "controls" attribute). player.js turns them off and shows the custom bar. #}
+      <div class="player" id="player" tabindex="0" aria-label="پخش‌کننده ویدیو">
+        <video class="player__video" id="player-video" controls playsinline preload="metadata" src="{{ episode.video_file.url }}">
+          مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
+        </video>
+
+        <span class="player__brand" aria-hidden="true">YUMIRA</span>
+
+        <div class="player__status" id="player-status" role="status" hidden>
+          <span class="player__spinner" id="player-spinner"></span>
+          <span id="player-status-text"></span>
+        </div>
+
+        <button class="player__big-play" id="player-big-play" type="button" aria-label="پخش" hidden>
+          <svg class="icon"><use href="#i-play"/></svg>
+        </button>
+
+        {# dir="ltr": the timeline always runs left to right, like most players. #}
+        <div class="player__controls" id="player-controls" dir="ltr" hidden>
+          <div class="player__progress" id="player-progress" role="slider" tabindex="0" aria-label="نوار پیشرفت ویدیو" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div class="player__track">
+              <div class="player__buffered" id="player-buffered"></div>
+              <div class="player__played" id="player-played"></div>
+            </div>
+            <div class="player__thumb" id="player-thumb"></div>
+            <span class="player__tooltip" id="player-tooltip">0:00</span>
+          </div>
+
+          <div class="player__row">
+            <div class="player__group">
+              <button class="player__btn player__btn--main" id="player-play" type="button" aria-label="پخش" title="پخش (Space)">
+                <svg class="icon icon--play"><use href="#i-play"/></svg>
+                <svg class="icon icon--pause"><use href="#i-pause"/></svg>
+              </button>
+              <button class="player__btn player__btn--skip" id="player-back" type="button" aria-label="۱۰ ثانیه عقب" title="۱۰ ثانیه عقب (J)">
+                <svg class="icon"><use href="#i-back"/></svg>
+              </button>
+              <button class="player__btn player__btn--skip" id="player-forward" type="button" aria-label="۱۰ ثانیه جلو" title="۱۰ ثانیه جلو (L)">
+                <svg class="icon"><use href="#i-forward"/></svg>
+              </button>
+              <div class="player__volume">
+                <button class="player__btn" id="player-mute" type="button" aria-label="قطع صدا" title="قطع صدا (M)">
+                  <svg class="icon icon--volume"><use href="#i-volume"/></svg>
+                  <svg class="icon icon--muted"><use href="#i-muted"/></svg>
+                </button>
+                <input class="player__volume-range" id="player-volume" type="range" min="0" max="1" step="0.05" value="1" aria-label="میزان صدا">
+              </div>
+              <span class="player__time"><span id="player-current">0:00</span> / <span id="player-duration">0:00</span></span>
+            </div>
+            <div class="player__group">
+              <button class="player__text-btn" id="player-speed-down" type="button" aria-label="کاهش سرعت" title="کاهش سرعت (&lt;)">−</button>
+              <button class="player__text-btn" id="player-speed" type="button" aria-label="سرعت پخش ۱× — بازگشت به سرعت عادی" title="بازگشت به سرعت عادی (۱×)">1×</button>
+              <button class="player__text-btn" id="player-speed-up" type="button" aria-label="افزایش سرعت" title="افزایش سرعت (&gt;)">+</button>
+              <button class="player__btn" id="player-fullscreen" type="button" aria-label="تمام‌صفحه" title="تمام‌صفحه (F)">
+                <svg class="icon icon--enter"><use href="#i-fullscreen"/></svg>
+                <svg class="icon icon--exit"><use href="#i-exit-fullscreen"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% else %}
+      <p class="empty-message">فایل ویدیوی این قسمت هنوز آپلود نشده است.</p>
+      {% endif %}
+    </div>
+
+    {% if episode.video_file %}
+    <div class="watch__actions">
+      <a class="btn btn--primary" href="{{ episode.video_file.url }}" download>دانلود این قسمت</a>
+    </div>
+    {% endif %}
+
+    {# A button shows only if that episode exists. The empty span keeps the other button on its side. #}
+    <nav class="episode-nav" aria-label="قسمت‌ها">
+      {% if previous_episode %}
+      <a class="btn btn--ghost" href="{% url 'watch' anime.slug previous_episode.number %}">→ قسمت قبلی</a>
+      {% else %}
+      <span></span>
+      {% endif %}
+      {% if next_episode %}
+      <a class="btn btn--ghost" href="{% url 'watch' anime.slug next_episode.number %}">قسمت بعدی ←</a>
+      {% endif %}
+    </nav>
+  </div>
+</section>
+
+{% if episode.video_file %}
+<script src="{% static 'js/player.js' %}"></script>
+{% endif %}
+{% endblock %}

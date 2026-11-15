@@ -1,0 +1,25 @@
+# Database
+db.sqlite3
+*.sqlite3
+
+# Uploaded files (keep the folder itself with .gitkeep)
+media/*
+!media/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+.venv/
+
+# Editors / IDEs
+.idea/
+.vscode/
+
+# Secrets and local settings
+.env
+
+# Collected static files (deployment)
+staticfiles/

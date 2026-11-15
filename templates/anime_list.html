@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load anime_extras %}
+
+{% block title %}آرشیو انیمه‌ها — YUMIRA{% endblock %}
+{% block body_class %}page-archive{% endblock %}
+
+{% block content %}
+<section class="page-head halftone">
+  <div class="container fade-in">
+    <div class="section-title">
+      <h2>آرشیو انیمه‌ها</h2>
+      <span class="section-title__jp" lang="ja">一覧</span>
+    </div>
+    <p>عنوان فارسی یا انگلیسی را جستجو کنید، یا با وضعیت پخش فهرست را محدود کنید.</p>
+  </div>
+</section>
+
+<section class="section fade-in">
+  <div class="container">
+    {# A real GET form: Django (anime_list view) does the searching and filtering. #}
+    <form class="filter-bar" id="filter-form" method="get" action="{% url 'anime_list' %}" role="search">
+      <div class="filter-bar__field filter-bar__field--search">
+        <label class="filter-bar__label" for="search-input">جستجوی عنوان</label>
+        <input type="search" id="search-input" name="q" value="{{ search }}" placeholder="مثلاً نئون یا Starfall" dir="auto" autocomplete="off">
+      </div>
+      <div class="filter-bar__field">
+        <label class="filter-bar__label" for="status-select">وضعیت پخش</label>
+        <select id="status-select" name="status">
+          <option value="">همه وضعیت‌ها</option>
+          {% for status_name in statuses %}
+          <option value="{{ status_name }}"{% if status_name == status %} selected{% endif %}>{{ status_name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <a class="btn btn--ghost" id="clear-filters" href="{% url 'anime_list' %}">پاک کردن فیلترها</a>
+    </form>
+
+    <p class="results-count" id="results-count" aria-live="polite">{{ animes|length|fa_digits }} انیمه نمایش داده می‌شود</p>
+
+    <div class="anime-grid" id="anime-grid">
+      {% for anime in animes %}
+      <article class="anime-card" data-title-fa="{{ anime.title_fa }}" data-title-en="{{ anime.title }}" data-status="{{ anime.status }}">
+        <a class="anime-card__link" href="{% url 'anime_detail' anime.slug %}">
+          <div class="poster anime-card__poster" style="{{ anime|poster_style }}">
+            {% if anime.poster %}
+            <img src="{{ anime.poster.url }}" alt="{{ anime.title_fa }}">
+            {% else %}
+            <span class="poster__glyph" lang="en" aria-hidden="true">{{ anime.title|slice:":1"|upper }}</span>
+            {% endif %}
+            <span class="anime-card__status">{{ anime.status }}</span>
+            <span class="anime-card__play" aria-hidden="true"></span>
+            <div class="anime-card__overlay" aria-hidden="true">
+              {% if anime.description %}<p class="anime-card__overlay-text">{{ anime.description }}</p>{% endif %}
+              <span class="anime-card__overlay-cta">مشاهده‌ی جزئیات ←</span>
+            </div>
+          </div>
+          <div class="anime-card__body">
+            <h3 class="anime-card__title">{{ anime.title_fa }}</h3>
+            <p class="anime-card__original" lang="en" dir="ltr">{{ anime.title }}</p>
+            <ul class="anime-card__meta">
+              <li class="anime-card__chip anime-card__chip--type">{{ anime.anime_type }}</li>
+              <li class="anime-card__chip">{{ anime.release_year|fa_digits }}</li>
+              {% with episode_count=anime.episodes.count %}
+              {% if episode_count %}<li class="anime-card__chip">{{ episode_count|fa_digits }} قسمت</li>{% endif %}
+              {% endwith %}
+            </ul>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+
+    {% if not animes %}
+    <p class="empty-message" id="no-results">نتیجه‌ای پیدا نشد. عبارت جستجو یا فیلترها را تغییر دهید.</p>
+    {% endif %}
+    <p class="sample-note">انیمه‌ها و اطلاعات این نسخه کاملاً خیالی‌اند و فقط برای پیش‌نمایش طراحی گذاشته شده‌اند.</p>
+  </div>
+</section>
+{% endblock %}

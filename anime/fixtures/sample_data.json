@@ -1,0 +1,400 @@
+[
+  {
+    "model": "anime.anime",
+    "pk": 1,
+    "fields": {
+      "title": "Terminal Nine",
+      "title_fa": "ترمینال نهم",
+      "slug": "terminal-nine",
+      "description": "در ایستگاهی که قطارهایش هیچ‌وقت به مقصد نمی‌رسند، گروهی از مسافران دنبال راه خروج می‌گردند. (متن نمونه)",
+      "poster": "",
+      "banner": "",
+      "genres": "ماجراجویی,معمایی",
+      "release_year": 2026,
+      "status": "در حال پخش",
+      "anime_type": "سریال"
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 1,
+    "fields": {
+      "anime": 1,
+      "number": 1,
+      "title": "آغاز",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 2,
+    "fields": {
+      "anime": 1,
+      "number": 2,
+      "title": "مسیر",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 3,
+    "fields": {
+      "anime": 1,
+      "number": 3,
+      "title": "پایان",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.anime",
+    "pk": 2,
+    "fields": {
+      "title": "Silent Circuit City",
+      "title_fa": "شهر مدار خاموش",
+      "slug": "silent-circuit-city",
+      "description": "شهری که همه‌ی دستگاه‌هایش ناگهان خاموش شده، و مهندسی جوان که دنبال علت آن است. (متن نمونه)",
+      "poster": "",
+      "banner": "",
+      "genres": "معمایی,علمی‌تخیلی",
+      "release_year": 2025,
+      "status": "در حال پخش",
+      "anime_type": "سریال"
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 4,
+    "fields": {
+      "anime": 2,
+      "number": 1,
+      "title": "آغاز",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 5,
+    "fields": {
+      "anime": 2,
+      "number": 2,
+      "title": "مسیر",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 6,
+    "fields": {
+      "anime": 2,
+      "number": 3,
+      "title": "پایان",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.anime",
+    "pk": 3,
+    "fields": {
+      "title": "Last Horizon Café",
+      "title_fa": "کافه‌ی آخر افق",
+      "slug": "last-horizon-cafe",
+      "description": "کافه‌ای کوچک در لبه‌ی افق و مشتری‌هایی که هرکدام داستانی برای گفتن دارند. (متن نمونه)",
+      "poster": "",
+      "banner": "",
+      "genres": "کمدی,درام",
+      "release_year": 2025,
+      "status": "در حال پخش",
+      "anime_type": "سریال"
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 7,
+    "fields": {
+      "anime": 3,
+      "number": 1,
+      "title": "آغاز",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 8,
+    "fields": {
+      "anime": 3,
+      "number": 2,
+      "title": "مسیر",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 9,
+    "fields": {
+      "anime": 3,
+      "number": 3,
+      "title": "پایان",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.anime",
+    "pk": 4,
+    "fields": {
+      "title": "Neon Shadow Nights",
+      "title_fa": "شب‌های نئون سایه",
+      "slug": "neon-shadow-nights",
+      "description": "در شهری که هرگز کاملاً تاریک نمی‌شود، نقشه‌بردی جوان ردپای یک سایه‌ی بی‌نام را در تونل‌های متروکه دنبال می‌کند. هر سرنخ او را به رازی عمیق‌تر از خود شهر می‌رساند. (متن نمونه)",
+      "poster": "",
+      "banner": "",
+      "genres": "اکشن,علمی‌تخیلی",
+      "release_year": 2024,
+      "status": "در حال پخش",
+      "anime_type": "سریال"
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 10,
+    "fields": {
+      "anime": 4,
+      "number": 1,
+      "title": "شهر زیر باران",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 11,
+    "fields": {
+      "anime": 4,
+      "number": 2,
+      "title": "کد سرخ",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 12,
+    "fields": {
+      "anime": 4,
+      "number": 3,
+      "title": "سایه‌ی بی‌نام",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 13,
+    "fields": {
+      "anime": 4,
+      "number": 4,
+      "title": "ایستگاه متروکه",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 14,
+    "fields": {
+      "anime": 4,
+      "number": 5,
+      "title": "خط مرزی",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 15,
+    "fields": {
+      "anime": 4,
+      "number": 6,
+      "title": "نور آخر",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.anime",
+    "pk": 5,
+    "fields": {
+      "title": "Glass Garden Protocol",
+      "title_fa": "پروتکل باغ شیشه‌ای",
+      "slug": "glass-garden-protocol",
+      "description": "باغی شیشه‌ای در یک ایستگاه فضایی و پژوهشگری که قانون‌های آن را زیر سؤال می‌برد. (متن نمونه)",
+      "poster": "",
+      "banner": "",
+      "genres": "درام,علمی‌تخیلی",
+      "release_year": 2024,
+      "status": "تکمیل‌شده",
+      "anime_type": "OVA"
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 16,
+    "fields": {
+      "anime": 5,
+      "number": 1,
+      "title": "آغاز",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 17,
+    "fields": {
+      "anime": 5,
+      "number": 2,
+      "title": "مسیر",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 18,
+    "fields": {
+      "anime": 5,
+      "number": 3,
+      "title": "پایان",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.anime",
+    "pk": 6,
+    "fields": {
+      "title": "Starfall Echo",
+      "title_fa": "پژواک ستاره‌ها",
+      "slug": "starfall-echo",
+      "description": "پژواک یک ستاره‌ی افتاده دختری را به سفری دور از خانه می‌کشاند. (متن نمونه)",
+      "poster": "",
+      "banner": "",
+      "genres": "ماجراجویی,فانتزی",
+      "release_year": 2023,
+      "status": "تکمیل‌شده",
+      "anime_type": "فیلم"
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 19,
+    "fields": {
+      "anime": 6,
+      "number": 1,
+      "title": "آغاز",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 20,
+    "fields": {
+      "anime": 6,
+      "number": 2,
+      "title": "مسیر",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 21,
+    "fields": {
+      "anime": 6,
+      "number": 3,
+      "title": "پایان",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.anime",
+    "pk": 7,
+    "fields": {
+      "title": "Moon Beneath the Tide",
+      "title_fa": "ماه زیر جزر و مد",
+      "slug": "moon-beneath-the-tide",
+      "description": "ماهی که هر شب از زیر آب دیده می‌شود و دو دوست که دنبال رازش می‌روند. (متن نمونه)",
+      "poster": "",
+      "banner": "",
+      "genres": "فانتزی,رمانس",
+      "release_year": 2023,
+      "status": "تکمیل‌شده",
+      "anime_type": "سریال"
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 22,
+    "fields": {
+      "anime": 7,
+      "number": 1,
+      "title": "آغاز",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 23,
+    "fields": {
+      "anime": 7,
+      "number": 2,
+      "title": "مسیر",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 24,
+    "fields": {
+      "anime": 7,
+      "number": 3,
+      "title": "پایان",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.anime",
+    "pk": 8,
+    "fields": {
+      "title": "Blade of Whispering Wind",
+      "title_fa": "تیغ باد نجواگر",
+      "slug": "blade-of-whispering-wind",
+      "description": "شمشیرزنی تنها و تیغی که با باد حرف می‌زند. (متن نمونه)",
+      "poster": "",
+      "banner": "",
+      "genres": "اکشن,فانتزی",
+      "release_year": 2022,
+      "status": "تکمیل‌شده",
+      "anime_type": "سریال"
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 25,
+    "fields": {
+      "anime": 8,
+      "number": 1,
+      "title": "آغاز",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 26,
+    "fields": {
+      "anime": 8,
+      "number": 2,
+      "title": "مسیر",
+      "video_file": ""
+    }
+  },
+  {
+    "model": "anime.episode",
+    "pk": 27,
+    "fields": {
+      "anime": 8,
+      "number": 3,
+      "title": "پایان",
+      "video_file": ""
+    }
+  }
+]

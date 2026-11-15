@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}شب‌های نئون سایه، قسمت ۳ — YUMIRA{% endblock %}
+{% block body_class %}page-archive{% endblock %}
+
+{% block content %}
+<section class="watch fade-in">
+  <div class="container">
+    <a class="back-link" href="/anime/neon-shadow-nights/">→ بازگشت به جزئیات انیمه</a>
+    <h1 class="watch__title">شب‌های نئون سایه <span class="ep-number">EP 03</span></h1>
+    <p class="watch__subtitle">سایه‌ی بی‌نام</p>
+
+    <div class="player-frame">
+      <!-- No video file yet. Later the file comes from the Media folder (uploaded in Django Admin) and is set as the video src. -->
+      <video controls playsinline preload="metadata">
+        مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
+      </video>
+    </div>
+
+    <div class="watch__actions">
+      <!-- Sample link only. Later it points to the same video file in Media. -->
+      <a class="btn btn--primary" href="#">دانلود این قسمت</a>
+    </div>
+
+    <!-- Show each button only if that episode exists (the first episode has no previous, the last has no next). -->
+    <nav class="episode-nav" aria-label="قسمت‌ها">
+      <a class="btn btn--ghost" href="/anime/neon-shadow-nights/episode/2/">→ قسمت قبلی</a>
+      <a class="btn btn--ghost" href="/anime/neon-shadow-nights/episode/4/">قسمت بعدی ←</a>
+    </nav>
+  </div>
+</section>
+{% endblock %}

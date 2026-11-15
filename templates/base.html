@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}YUMIRA — Beyond Your Imagination{% endblock %}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Space+Grotesk:wght@400;500;700&family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <!-- Temporary logo: plain text plus a simple CSS mark. Replace when the final Emblem logo is ready. -->
+      <a class="logo" href="{% url 'home' %}">
+        <span class="logo__mark" aria-hidden="true"></span>
+        <span class="logo__text">YUMIRA</span>
+      </a>
+      <button class="menu-button" id="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="باز و بسته کردن منو">
+        <span class="menu-button__bar"></span>
+        <span class="menu-button__bar"></span>
+        <span class="menu-button__bar"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="منوی اصلی">
+        <a class="site-nav__link" data-nav="home" href="{% url 'home' %}">خانه</a>
+        <a class="site-nav__link" data-nav="archive" href="{% url 'anime_list' %}">آرشیو انیمه‌ها</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+    <footer class="site-footer halftone">
+    <div class="container site-footer__container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <a class="logo" href="{% url 'home' %}">
+            <span class="logo__mark" aria-hidden="true"></span>
+            <span class="logo__text">YUMIRA</span>
+          </a>
+          <p class="site-footer__slogan" lang="en" dir="ltr">Beyond Your Imagination.</p>
+          <p class="site-footer__about">نمونه‌ای از یک سایت انیمه: آرشیو را مرور کنید، بر اساس وضعیت پخش فیلتر کنید و قسمت‌ها را ببینید.</p>
+        </div>
+
+        <nav class="site-footer__col" aria-label="دسترسی سریع">
+          <h2 class="site-footer__title">دسترسی سریع</h2>
+          <ul class="site-footer__list">
+            <li><a href="{% url 'home' %}">خانه</a></li>
+            <li><a href="{% url 'anime_list' %}">آرشیو انیمه‌ها</a></li>
+          </ul>
+        </nav>
+
+        <nav class="site-footer__col" aria-label="وضعیت انیمه‌ها">
+          <h2 class="site-footer__title">وضعیت انیمه‌ها</h2>
+          <ul class="site-footer__list">
+            <li><a href="{% url 'anime_list' %}?status=در%20حال%20پخش">در حال پخش</a></li>
+            <li><a href="{% url 'anime_list' %}?status=تکمیل‌شده">تکمیل‌شده</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p class="site-footer__copy">© YUMIRA — پروژه تمرینی. اطلاعات این نسخه نمونه و خیالی است.</p>
+        <a class="site-footer__top" href="#" aria-label="بازگشت به بالای صفحه">بازگشت به بالا <span aria-hidden="true">↑</span></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

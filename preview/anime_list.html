@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>آرشیو انیمه‌ها — YUMIRA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Space+Grotesk:wght@400;500;700&family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body class="page-archive">
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <!-- Temporary logo: plain text plus a simple CSS mark. Replace when the final Emblem logo is ready. -->
+      <a class="logo" href="home.html">
+        <span class="logo__mark" aria-hidden="true"></span>
+        <span class="logo__text">YUMIRA</span>
+      </a>
+      <button class="menu-button" id="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="باز و بسته کردن منو">
+        <span class="menu-button__bar"></span>
+        <span class="menu-button__bar"></span>
+        <span class="menu-button__bar"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="منوی اصلی">
+        <a class="site-nav__link" data-nav="home" href="home.html">خانه</a>
+        <a class="site-nav__link" data-nav="archive" href="anime_list.html">آرشیو انیمه‌ها</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-head halftone">
+      <div class="container fade-in">
+        <div class="section-title">
+          <h2>آرشیو انیمه‌ها</h2>
+          <span class="section-title__jp" lang="ja">一覧</span>
+        </div>
+        <p>عنوان فارسی یا انگلیسی را جستجو کنید، یا با ژانر و وضعیت پخش فهرست را محدود کنید.</p>
+      </div>
+    </section>
+
+    <section class="section fade-in">
+      <div class="container">
+        <!-- For now this form only filters the cards on this page with main.js. Later it can become a normal GET form handled by Django. -->
+        <form class="filter-bar" id="filter-form" role="search">
+          <div class="filter-bar__field filter-bar__field--search">
+            <label class="filter-bar__label" for="search-input">جستجوی عنوان</label>
+            <input type="search" id="search-input" placeholder="مثلاً نئون یا Starfall" dir="auto" autocomplete="off">
+          </div>
+          <div class="filter-bar__field">
+            <label class="filter-bar__label" for="genre-select">ژانر</label>
+            <select id="genre-select">
+              <option value="">همه ژانرها</option>
+              <option value="اکشن">اکشن</option>
+              <option value="ماجراجویی">ماجراجویی</option>
+              <option value="فانتزی">فانتزی</option>
+              <option value="علمی‌تخیلی">علمی‌تخیلی</option>
+              <option value="کمدی">کمدی</option>
+              <option value="درام">درام</option>
+              <option value="رمانس">رمانس</option>
+              <option value="معمایی">معمایی</option>
+            </select>
+          </div>
+          <div class="filter-bar__field">
+            <label class="filter-bar__label" for="status-select">وضعیت پخش</label>
+            <select id="status-select">
+              <option value="">همه وضعیت‌ها</option>
+              <option value="در حال پخش">در حال پخش</option>
+              <option value="تکمیل‌شده">تکمیل‌شده</option>
+            </select>
+          </div>
+          <button class="btn btn--ghost" type="button" id="clear-filters">پاک کردن فیلترها</button>
+        </form>
+
+        <p class="results-count" id="results-count" aria-live="polite"></p>
+
+        <!-- Every card has the same HTML. Later, replace these sample cards with one Django for-loop over the anime list.
+             To show a real poster, put an img tag inside .poster (files go in ../static/images/placeholders/). -->
+        <div class="anime-grid" id="anime-grid">
+          <article class="anime-card" data-title-fa="شب‌های نئون سایه" data-title-en="Neon Shadow Nights" data-genres="اکشن,علمی‌تخیلی" data-status="در حال پخش">
+            <a class="anime-card__link" href="anime_detail.html">
+              <div class="poster anime-card__poster" style="--poster-a: #4a1fa8; --poster-b: #0c1030;">
+                <span class="poster__glyph" lang="ja" aria-hidden="true">夜</span>
+                <span class="anime-card__status">در حال پخش</span>
+              </div>
+              <div class="anime-card__body">
+                <h3 class="anime-card__title">شب‌های نئون سایه</h3>
+                <p class="anime-card__original" lang="en" dir="ltr">Neon Shadow Nights</p>
+                <p class="anime-card__meta">۲۰۲۴ · اکشن</p>
+              </div>
+            </a>
+          </article>
+          <article class="anime-card" data-title-fa="پژواک ستاره‌ها" data-title-en="Starfall Echo" data-genres="ماجراجویی,فانتزی" data-status="تکمیل‌شده">
+            <a class="anime-card__link" href="anime_detail.html">
+              <div class="poster anime-card__poster" style="--poster-a: #123a6b; --poster-b: #0a0f26;">
+                <span class="poster__glyph" lang="ja" aria-hidden="true">星</span>
+                <span class="anime-card__status">تکمیل‌شده</span>
+              </div>
+              <div class="anime-card__body">
+                <h3 class="anime-card__title">پژواک ستاره‌ها</h3>
+                <p class="anime-card__original" lang="en" dir="ltr">Starfall Echo</p>
+                <p class="anime-card__meta">۲۰۲۳ · ماجراجویی</p>
+              </div>
+            </a>
+          </article>
+          <article class="anime-card" data-title-fa="کافه‌ی آخر افق" data-title-en="Last Horizon Café" data-genres="کمدی,درام" data-status="در حال پخش">
+            <a class="anime-card__link" href="anime_detail.html">
+              <div class="poster anime-card__poster" style="--poster-a: #7a2a70; --poster-b: #1a0f2e;">
+                <span class="poster__glyph" lang="ja" aria-hidden="true">茶</span>
+                <span class="anime-card__status">در حال پخش</span>
+              </div>
+              <div class="anime-card__body">
+                <h3 class="anime-card__title">کافه‌ی آخر افق</h3>
+                <p class="anime-card__original" lang="en" dir="ltr">Last Horizon Café</p>
+                <p class="anime-card__meta">۲۰۲۵ · کمدی</p>
+              </div>
+            </a>
+          </article>
+          <article class="anime-card" data-title-fa="تیغ باد نجواگر" data-title-en="Blade of Whispering Wind" data-genres="اکشن,فانتزی" data-status="تکمیل‌شده">
+            <a class="anime-card__link" href="anime_detail.html">
+              <div class="poster anime-card__poster" style="--poster-a: #1f2f6b; --poster-b: #14091f;">
+                <span class="poster__glyph" lang="ja" aria-hidden="true">風</span>
+                <span class="anime-card__status">تکمیل‌شده</span>
+              </div>
+              <div class="anime-card__body">
+                <h3 class="anime-card__title">تیغ باد نجواگر</h3>
+                <p class="anime-card__original" lang="en" dir="ltr">Blade of Whispering Wind</p>
+                <p class="anime-card__meta">۲۰۲۲ · اکشن</p>
+              </div>
+            </a>
+          </article>
+          <article class="anime-card" data-title-fa="پروتکل باغ شیشه‌ای" data-title-en="Glass Garden Protocol" data-genres="درام,علمی‌تخیلی" data-status="تکمیل‌شده">
+            <a class="anime-card__link" href="anime_detail.html">
+              <div class="poster anime-card__poster" style="--poster-a: #0e5a68; --poster-b: #0c1030;">
+                <span class="poster__glyph" lang="ja" aria-hidden="true">庭</span>
+                <span class="anime-card__status">تکمیل‌شده</span>
+              </div>
+              <div class="anime-card__body">
+                <h3 class="anime-card__title">پروتکل باغ شیشه‌ای</h3>
+                <p class="anime-card__original" lang="en" dir="ltr">Glass Garden Protocol</p>
+                <p class="anime-card__meta">۲۰۲۴ · درام</p>
+              </div>
+            </a>
+          </article>
+          <article class="anime-card" data-title-fa="شهر مدار خاموش" data-title-en="Silent Circuit City" data-genres="معمایی,علمی‌تخیلی" data-status="در حال پخش">
+            <a class="anime-card__link" href="anime_detail.html">
+              <div class="poster anime-card__poster" style="--poster-a: #3a2a8a; --poster-b: #070a14;">
+                <span class="poster__glyph" lang="ja" aria-hidden="true">機</span>
+                <span class="anime-card__status">در حال پخش</span>
+              </div>
+              <div class="anime-card__body">
+                <h3 class="anime-card__title">شهر مدار خاموش</h3>
+                <p class="anime-card__original" lang="en" dir="ltr">Silent Circuit City</p>
+                <p class="anime-card__meta">۲۰۲۵ · معمایی</p>
+              </div>
+            </a>
+          </article>
+          <article class="anime-card" data-title-fa="ماه زیر جزر و مد" data-title-en="Moon Beneath the Tide" data-genres="فانتزی,رمانس" data-status="تکمیل‌شده">
+            <a class="anime-card__link" href="anime_detail.html">
+              <div class="poster anime-card__poster" style="--poster-a: #2a3a9a; --poster-b: #1a0a36;">
+                <span class="poster__glyph" lang="ja" aria-hidden="true">月</span>
+                <span class="anime-card__status">تکمیل‌شده</span>
+              </div>
+              <div class="anime-card__body">
+                <h3 class="anime-card__title">ماه زیر جزر و مد</h3>
+                <p class="anime-card__original" lang="en" dir="ltr">Moon Beneath the Tide</p>
+                <p class="anime-card__meta">۲۰۲۳ · فانتزی</p>
+              </div>
+            </a>
+          </article>
+          <article class="anime-card" data-title-fa="ترمینال نهم" data-title-en="Terminal Nine" data-genres="ماجراجویی,معمایی" data-status="در حال پخش">
+            <a class="anime-card__link" href="anime_detail.html">
+              <div class="poster anime-card__poster" style="--poster-a: #6a2aa0; --poster-b: #0a1226;">
+                <span class="poster__glyph" lang="ja" aria-hidden="true">駅</span>
+                <span class="anime-card__status">در حال پخش</span>
+              </div>
+              <div class="anime-card__body">
+                <h3 class="anime-card__title">ترمینال نهم</h3>
+                <p class="anime-card__original" lang="en" dir="ltr">Terminal Nine</p>
+                <p class="anime-card__meta">۲۰۲۶ · ماجراجویی</p>
+              </div>
+            </a>
+          </article>
+        </div>
+
+        <p class="empty-message" id="no-results" hidden>نتیجه‌ای پیدا نشد. عبارت جستجو یا فیلترها را تغییر دهید.</p>
+        <p class="sample-note">انیمه‌ها و اطلاعات این نسخه کاملاً خیالی‌اند و فقط برای پیش‌نمایش طراحی گذاشته شده‌اند.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer halftone">
+    <div class="container site-footer__inner">
+      <div>
+        <a class="logo" href="home.html">
+          <span class="logo__mark" aria-hidden="true"></span>
+          <span class="logo__text">YUMIRA</span>
+        </a>
+        <p class="site-footer__slogan" lang="en" dir="ltr">Beyond Your Imagination.</p>
+      </div>
+      <nav class="site-footer__links" aria-label="پیوندهای پایین صفحه">
+        <a href="home.html">خانه</a>
+        <a href="anime_list.html">آرشیو انیمه‌ها</a>
+      </nav>
+    </div>
+    <div class="container site-footer__copy">© YUMIRA — پروژه تمرینی. اطلاعات این نسخه نمونه و خیالی است.</div>
+  </footer>
+
+  <script src="../static/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>شب‌های نئون سایه — YUMIRA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Space+Grotesk:wght@400;500;700&family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body class="page-archive">
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <!-- Temporary logo: plain text plus a simple CSS mark. Replace when the final Emblem logo is ready. -->
+      <a class="logo" href="home.html">
+        <span class="logo__mark" aria-hidden="true"></span>
+        <span class="logo__text">YUMIRA</span>
+      </a>
+      <button class="menu-button" id="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="باز و بسته کردن منو">
+        <span class="menu-button__bar"></span>
+        <span class="menu-button__bar"></span>
+        <span class="menu-button__bar"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="منوی اصلی">
+        <a class="site-nav__link" data-nav="home" href="home.html">خانه</a>
+        <a class="site-nav__link" data-nav="archive" href="anime_list.html">آرشیو انیمه‌ها</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="detail-banner halftone" style="--poster-a: #4a1fa8; --poster-b: #0c1030;">
+      <span class="detail-banner__glyph" lang="ja" aria-hidden="true">夜</span>
+    </section>
+
+    <section class="container detail fade-in">
+      <div class="poster detail__poster" style="--poster-a: #4a1fa8; --poster-b: #0c1030;">
+        <span class="poster__glyph" lang="ja" aria-hidden="true">夜</span>
+      </div>
+      <div class="detail__info">
+        <h1 class="detail__title">شب‌های نئون سایه</h1>
+        <p class="detail__original" lang="en" dir="ltr">Neon Shadow Nights</p>
+
+        <dl class="info-list">
+          <div><dt>سال انتشار</dt><dd>۲۰۲۴</dd></div>
+          <div><dt>نوع</dt><dd>سریال</dd></div>
+          <div><dt>وضعیت پخش</dt><dd>در حال پخش</dd></div>
+          <div><dt>تعداد قسمت‌ها</dt><dd>۶ قسمت</dd></div>
+        </dl>
+
+        <ul class="chip-list" aria-label="ژانرها">
+          <li class="chip">اکشن</li>
+          <li class="chip">علمی‌تخیلی</li>
+        </ul>
+
+        <h2 class="detail__summary-title">خلاصه داستان</h2>
+        <p class="detail__summary">در شهری که هرگز کاملاً تاریک نمی‌شود، نقشه‌بردی جوان ردپای یک سایه‌ی بی‌نام را در تونل‌های متروکه دنبال می‌کند. هر سرنخ او را به رازی عمیق‌تر از خود شهر می‌رساند. (متن نمونه)</p>
+      </div>
+    </section>
+
+    <section class="section fade-in">
+      <div class="container">
+        <div class="section-title">
+          <h2>فهرست قسمت‌ها</h2>
+          <span class="section-title__jp" lang="ja">話数</span>
+        </div>
+        <p class="episode-count">۶ قسمت</p>
+
+        <ul class="episode-list">
+          <li class="episode-row">
+            <span class="ep-number">EP 01</span>
+            <span class="episode-row__title">شهر زیر باران</span>
+            <a class="btn btn--primary btn--small" href="watch.html">پخش</a>
+          </li>
+          <li class="episode-row">
+            <span class="ep-number">EP 02</span>
+            <span class="episode-row__title">کد سرخ</span>
+            <a class="btn btn--primary btn--small" href="watch.html">پخش</a>
+          </li>
+          <li class="episode-row">
+            <span class="ep-number">EP 03</span>
+            <span class="episode-row__title">سایه‌ی بی‌نام</span>
+            <a class="btn btn--primary btn--small" href="watch.html">پخش</a>
+          </li>
+          <li class="episode-row">
+            <span class="ep-number">EP 04</span>
+            <span class="episode-row__title">ایستگاه متروکه</span>
+            <a class="btn btn--primary btn--small" href="watch.html">پخش</a>
+          </li>
+          <li class="episode-row">
+            <span class="ep-number">EP 05</span>
+            <span class="episode-row__title">خط مرزی</span>
+            <a class="btn btn--primary btn--small" href="watch.html">پخش</a>
+          </li>
+          <li class="episode-row">
+            <span class="ep-number">EP 06</span>
+            <span class="episode-row__title">نور آخر</span>
+            <a class="btn btn--primary btn--small" href="watch.html">پخش</a>
+          </li>
+        </ul>
+
+        <!-- Shown only when the anime has no episodes yet (hidden for now). -->
+        <p class="empty-message" id="episodes-empty" hidden>هنوز قسمتی برای این انیمه ثبت نشده است.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer halftone">
+    <div class="container site-footer__inner">
+      <div>
+        <a class="logo" href="home.html">
+          <span class="logo__mark" aria-hidden="true"></span>
+          <span class="logo__text">YUMIRA</span>
+        </a>
+        <p class="site-footer__slogan" lang="en" dir="ltr">Beyond Your Imagination.</p>
+      </div>
+      <nav class="site-footer__links" aria-label="پیوندهای پایین صفحه">
+        <a href="home.html">خانه</a>
+        <a href="anime_list.html">آرشیو انیمه‌ها</a>
+      </nav>
+    </div>
+    <div class="container site-footer__copy">© YUMIRA — پروژه تمرینی. اطلاعات این نسخه نمونه و خیالی است.</div>
+  </footer>
+
+  <script src="../static/js/main.js"></script>
+</body>
+</html>

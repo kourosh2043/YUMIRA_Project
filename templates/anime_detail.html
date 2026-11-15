@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load anime_extras %}
+
+{% block title %}{{ anime.title_fa }} — YUMIRA{% endblock %}
+{% block body_class %}page-detail{% endblock %}
+
+{% block content %}
+<section class="detail-banner halftone" style="{{ anime|poster_style }}">
+  {% if anime.banner %}
+  <img src="{{ anime.banner.url }}" alt="">
+  {% else %}
+  <span class="detail-banner__glyph" lang="en" aria-hidden="true">{{ anime.title|slice:":1"|upper }}</span>
+  {% endif %}
+</section>
+
+<section class="container detail fade-in">
+  <div class="poster detail__poster" style="{{ anime|poster_style }}">
+    {% if anime.poster %}
+    <img src="{{ anime.poster.url }}" alt="{{ anime.title_fa }}">
+    {% else %}
+    <span class="poster__glyph" lang="en" aria-hidden="true">{{ anime.title|slice:":1"|upper }}</span>
+    {% endif %}
+  </div>
+  <div class="detail__info">
+    <h1 class="detail__title">{{ anime.title_fa }}</h1>
+    <p class="detail__original" lang="en" dir="ltr">{{ anime.title }}</p>
+
+    <dl class="info-list">
+      <div><dt>سال انتشار</dt><dd>{{ anime.release_year|fa_digits }}</dd></div>
+      <div><dt>نوع</dt><dd>{{ anime.anime_type }}</dd></div>
+      <div><dt>وضعیت پخش</dt><dd>{{ anime.status }}</dd></div>
+      {% if episodes %}
+      <div><dt>تعداد قسمت‌ها</dt><dd>{{ episodes|length|fa_digits }} قسمت</dd></div>
+      {% endif %}
+    </dl>
+
+    {% if anime.genre_list %}
+    <ul class="chip-list" aria-label="ژانرها">
+      {% for genre_name in anime.genre_list %}
+      <li class="chip">{{ genre_name }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if anime.description %}
+    <h2 class="detail__summary-title">خلاصه داستان</h2>
+    <p class="detail__summary">{{ anime.description }}</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section fade-in">
+  <div class="container">
+    <div class="section-title">
+      <h2>فهرست قسمت‌ها</h2>
+      <span class="section-title__jp" lang="ja">話数</span>
+    </div>
+    {% if episodes %}
+    <p class="episode-count">{{ episodes|length|fa_digits }} قسمت</p>
+    {% endif %}
+
+    <ul class="episode-list">
+      {% for episode in episodes %}
+      <li class="episode-row">
+        <span class="ep-number">EP {{ episode.number|stringformat:"02d" }}</span>
+        <span class="episode-row__title">{{ episode.title }}</span>
+        <a class="btn btn--primary btn--small" href="{% url 'watch' anime.slug episode.number %}">پخش</a>
+      </li>
+      {% empty %}
+      <li class="empty-message">هنوز قسمتی برای این انیمه ثبت نشده است.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}

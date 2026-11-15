@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load anime_extras %}
+
+{% block title %}YUMIRA — Beyond Your Imagination{% endblock %}
+{% block body_class %}page-home{% endblock %}
+
+{% block content %}
+<section class="hero halftone">
+  <span class="hero__glyph" lang="ja" aria-hidden="true">想</span>
+  <div class="container hero__inner fade-in">
+    <p class="hero__eyebrow" lang="ja">想像を超えて</p>
+    <h1 class="hero__title" lang="en" dir="ltr">Beyond Your<br>Imagination.</h1>
+    <p class="hero__text">دنیایی سینمایی از انیمه؛ آرشیو را مرور کنید، جزئیات هر انیمه را ببینید و قسمت‌ها را در یک صفحه‌ی ساده تماشا کنید.</p>
+    <a class="btn btn--primary" href="{% url 'anime_list' %}">مشاهده آرشیو انیمه‌ها</a>
+  </div>
+</section>
+
+<section class="section fade-in">
+  <div class="container">
+    <div class="section-title">
+      <h2>انیمه‌های منتخب</h2>
+      <span class="section-title__jp" lang="ja">注目</span>
+    </div>
+    {# The card HTML is the same on the home, archive and detail pages. #}
+    <div class="anime-grid">
+      {% for anime in featured %}
+      <article class="anime-card" data-title-fa="{{ anime.title_fa }}" data-title-en="{{ anime.title }}" data-status="{{ anime.status }}">
+        <a class="anime-card__link" href="{% url 'anime_detail' anime.slug %}">
+          <div class="poster anime-card__poster" style="{{ anime|poster_style }}">
+            {% if anime.poster %}
+            <img src="{{ anime.poster.url }}" alt="{{ anime.title_fa }}">
+            {% else %}
+            <span class="poster__glyph" lang="en" aria-hidden="true">{{ anime.title|slice:":1"|upper }}</span>
+            {% endif %}
+            <span class="anime-card__status">{{ anime.status }}</span>
+            <span class="anime-card__play" aria-hidden="true"></span>
+            <div class="anime-card__overlay" aria-hidden="true">
+              {% if anime.description %}<p class="anime-card__overlay-text">{{ anime.description }}</p>{% endif %}
+              <span class="anime-card__overlay-cta">مشاهده‌ی جزئیات ←</span>
+            </div>
+          </div>
+          <div class="anime-card__body">
+            <h3 class="anime-card__title">{{ anime.title_fa }}</h3>
+            <p class="anime-card__original" lang="en" dir="ltr">{{ anime.title }}</p>
+            <ul class="anime-card__meta">
+              <li class="anime-card__chip anime-card__chip--type">{{ anime.anime_type }}</li>
+              <li class="anime-card__chip">{{ anime.release_year|fa_digits }}</li>
+              {% with episode_count=anime.episodes.count %}
+              {% if episode_count %}<li class="anime-card__chip">{{ episode_count|fa_digits }} قسمت</li>{% endif %}
+              {% endwith %}
+            </ul>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section fade-in">
+  <div class="container">
+    <div class="section-title">
+      <h2>جدیدترین انیمه‌ها</h2>
+      <span class="section-title__jp" lang="ja">新着</span>
+    </div>
+    <div class="anime-grid">
+      {% for anime in latest %}
+      <article class="anime-card" data-title-fa="{{ anime.title_fa }}" data-title-en="{{ anime.title }}" data-status="{{ anime.status }}">
+        <a class="anime-card__link" href="{% url 'anime_detail' anime.slug %}">
+          <div class="poster anime-card__poster" style="{{ anime|poster_style }}">
+            {% if anime.poster %}
+            <img src="{{ anime.poster.url }}" alt="{{ anime.title_fa }}">
+            {% else %}
+            <span class="poster__glyph" lang="en" aria-hidden="true">{{ anime.title|slice:":1"|upper }}</span>
+            {% endif %}
+            <span class="anime-card__status">{{ anime.status }}</span>
+            <span class="anime-card__play" aria-hidden="true"></span>
+            <div class="anime-card__overlay" aria-hidden="true">
+              {% if anime.description %}<p class="anime-card__overlay-text">{{ anime.description }}</p>{% endif %}
+              <span class="anime-card__overlay-cta">مشاهده‌ی جزئیات ←</span>
+            </div>
+          </div>
+          <div class="anime-card__body">
+            <h3 class="anime-card__title">{{ anime.title_fa }}</h3>
+            <p class="anime-card__original" lang="en" dir="ltr">{{ anime.title }}</p>
+            <ul class="anime-card__meta">
+              <li class="anime-card__chip anime-card__chip--type">{{ anime.anime_type }}</li>
+              <li class="anime-card__chip">{{ anime.release_year|fa_digits }}</li>
+              {% with episode_count=anime.episodes.count %}
+              {% if episode_count %}<li class="anime-card__chip">{{ episode_count|fa_digits }} قسمت</li>{% endif %}
+              {% endwith %}
+            </ul>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="sample-note">انیمه‌ها و اطلاعات این نسخه کاملاً خیالی‌اند و فقط برای پیش‌نمایش طراحی گذاشته شده‌اند.</p>
+  </div>
+</section>
+{% endblock %}
